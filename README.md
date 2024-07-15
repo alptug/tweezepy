@@ -2,13 +2,15 @@
 [![DOI](https://zenodo.org/badge/261266475.svg)](https://zenodo.org/badge/latestdoi/261266475)
 
 
-This is [Tweezepy](https://github.com/ianlmorgan/tweezepy), a Python package for calibrating forces in single-molecule force spectroscopy video-tracking experiments using the power spectral density (PSD) and Allan variance (AV).
+This is [Tweezepy](https://github.com/ianlmorgan/tweezepy), a Python package for calibrating forces in single-molecule force spectroscopy video-tracking experiments using the power spectral density (PSD), Allan variance (AV), and Hadamard variance (HV).
 
 ## Documentation
 Read the documentation for [Tweezepy](https://tweezepy.readthedocs.io/).
+The usage of HV is the same as AV. You just need to replace every "AV" with "HV"
 
 ## How to install
 The simplest method of installing the `Tweezepy` package is via the [Python Package Index](https://packaging.python.org/glossary/#term-python-package-index-pypi) (PyPI). To install from PyPI, you will need to be able to run python from the command line and make sure you have [pip](https://packaging.python.org/key_projects/#pip) available.
+However, HV is only available via setuptools, it will be added to PyPI soon.
 
 Install from PyPI:
 
@@ -27,4 +29,5 @@ The `Tweezepy` package includes the following modules:
 * 'expressions' - functions with closed-form expressions for thermal motion in the PSD and AV
 * 'MLE' - classes for maximum likelihood estimation (MLE) and Monte Carlo Markov chain (MCMC) sampling
 * 'allanvar' - tools for calculating the AV and equivalent degrees of freedom
+* 'hadamardvar' - tools for calculating the HV and equivalent degrees of freedom
 * 'simulations' - tools to simulate bead thermal motion
