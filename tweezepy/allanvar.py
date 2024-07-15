@@ -99,11 +99,14 @@ def avar(data, rate = 1.0, taus = 'octave', overlapping = True, edf = 'approx'):
         for i,mj in enumerate(m):
             if N//mj > 32:
                 alpha_int = noise_id(data,mj)[0]
-            if (alpha_int<3) and (alpha_int>-3):
-                edfs[i] = edf_greenhall(alpha_int,2,mj,N)
+                if (alpha_int<3) and (alpha_int>-3):
+                    edfs[i] = edf_greenhall(alpha_int,2,mj,N)
+                else:
+                    warn('Real edf failed to identify noise for %s. Falling back to approximate edf.'%mj)
+                    edfs[i] = edf_approx(N,mj)
             else:
-                warn('Real edf failed to identify noise for %s. Falling back to approximate edf.'%mj)
-                edfs[i] = edf_approx(N,mj)
+                    warn('Real edf failed to identify noise for %s. Falling back to approximate edf.'%mj)
+                    edfs[i] = edf_approx(N,mj)
     elif edf == 'approx':
         edfs = edf_approx(N,m)
     else:
@@ -511,7 +514,7 @@ def greenhall_table3(alpha, d):
 def greenhall_table2(alpha, d):
     """ Table 2 from Greenhall 2004 """
     row_idx = int(-alpha+2)  # map 2-> row0 and -4-> row6
-    assert(row_idx in [0, 1, 2, 3, 4, 5])
+    assert(row_idx in [0, 1, 2, 3, 4, 5, 6])
     col_idx = int(d-1)
     table2 = [
         # alpha = +2:
