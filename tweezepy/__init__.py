@@ -1,4 +1,5 @@
 from .smmcalibration import AV
+from .smmcalibration import HV
 from .smmcalibration import PSD
 from .smmcalibration import load_trajectory
 from .simulations import simulate_trace
@@ -22,6 +23,7 @@ except DistributionNotFound:
 #__version__ = pkginfo["version"]
 __all__ = [
            "AV",
+           "HV",
            "PSD",
            "simulate_trace",
            "downsampled_trace",
